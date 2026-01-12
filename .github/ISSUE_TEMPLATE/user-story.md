@@ -7,9 +7,17 @@ assignees: ""
 ---
 
 ## User Story
-As a  
-I want  
-so that  
+
+**Role:**  
+(e.g. user, admin, student)
+
+**Goal / I want:**  
+(what do you want to do?)
+
+**Benefit / so that:**  
+(why is this important?)
+
+---
 
 ## Acceptance Criteria
 - [ ]
