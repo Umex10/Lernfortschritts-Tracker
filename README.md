@@ -7,7 +7,7 @@ Der Lernfortschritts-Tracker ist eine Webanwendung zur strukturierten Verfolgung
 | Name          | GitHub                        |
 | ------------- | ----------------------------- |
 | Thomas Feyerl | [@Thomas](https://github.com/FrontendTF) |
-| Umejr Dzinovic | [@Umejr](https://github.com/Umejr) |
+| Umejr Dzinovic | [@Umejr](https://github.com/Umex10) |
 | Rozaliya Aleksandrova | [@Rozaliya](https://github.com/rozaliyaAleksandrova) |
 | Liyu Wu | [@Liyu](https://github.com/LiyuWu1976) |
-| Afik | [@Afik](https://github.com/LiyuWu1976) |
+| Afik | [@Afik]() |
