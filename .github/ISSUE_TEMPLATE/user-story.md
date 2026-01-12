@@ -8,14 +8,9 @@ assignees: ""
 
 ## User Story
 
-**Role:**  
-(e.g. user, admin, student)
-
-**Goal / I want:**  
-(what do you want to do?)
-
-**Benefit / so that:**  
-(why is this important?)
+As a **<role>**  
+I want to **<goal / action>**  
+so that **<benefit / reason>**
 
 ---
 
