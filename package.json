@@ -1,0 +1,30 @@
+{
+  "name": "lernfortschritts-tracker",
+  "version": "1.0.0",
+  "description": "Der Lernfortschritts-Tracker ist eine Webanwendung zur strukturierten Verfolgung des eigenen Lernprozesses. Nutzer sehen eine Liste vordefinierter Lerninhalte, können für jeden Inhalt ihren aktuellen Lernstatus festlegen und persönliche Kommentare hinzufügen. Der Fortschritt wird übersichtlich visualisiert, Lerninhalte können gesucht oder gefiltert werden, und alle Daten bleiben dauerhaft gespeichert, sodass der Lernstand auch bei einem späteren Besuch erhalten bleibt.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm install && node server/index.js", 
+    "dev": "npm install && nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Umex10/Lernfortschritts-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Umex10/Lernfortschritts-Tracker/issues"
+  },
+  "homepage": "https://github.com/Umex10/Lernfortschritts-Tracker#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "nodemon": "^3.1.11"
+  }
+}
