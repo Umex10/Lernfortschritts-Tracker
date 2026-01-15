@@ -5,6 +5,7 @@ const app = express(); // server
 const PT = 3000;
 
 app.use(express.static(path.join(process.cwd(), "public"))); //middleware
+app.use("/tests", express.static(path.join(process.cwd(), "tests"))); // tests folder
 
 app.get("/module.json", (req, res) => {
   res.sendFile(path.join(process.cwd(), "server/module.json"));
