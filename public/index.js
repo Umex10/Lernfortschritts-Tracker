@@ -1,16 +1,23 @@
 import { getModules } from "./getModules.js";
 
 const reload = document.getElementById("reload");
-const tasks = document.querySelectorAll("#tasks li");
+const taskList = document.getElementById("tasks");
 
 export const setTasks = (newModules) => {
-reload.addEventListener("click", () => {
-  tasks.forEach((li, index) => {
-    const newModuleString = newModules[index];
-    li.textContent = `${newModuleString.id} 
-    ${newModuleString.status}`;
-  });
-})
-}
+  taskList.innerHTML = ""; // reset
 
+  newModules.forEach(module => {
+    const li = document.createElement("li");
+    li.textContent = `${module.id} – ${module.status}`;
+    taskList.appendChild(li);
+  });
+};
+
+
+
+reload.addEventListener("click", () => {
+  console.log("Reloaded")
+  const newModules = getModules();
+  setTasks(newModules);
+});
 

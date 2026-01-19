@@ -24,6 +24,7 @@ export const getModules = () => {
     if (loadedModules) {
       newModules = JSON.parse(loadedModules);
       setTasks(newModules);
+      return newModules;
     }
   } catch (error) {
     console.error("Fehler beim Laden der Module aus localStorage", error);
