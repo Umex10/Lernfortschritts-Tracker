@@ -20,12 +20,7 @@
       content="Tracke Lernziele, Sessions und Fortschritt mit der besten App der Welt"
     />
     <meta property="og:url" content="https://google.com" />
-    <!--<meta property="og:image" content="https://example.com/assets/og-image.png" />-->
     <meta property="og:locale" content="de_AT" />
-    <!-- Favicon 
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
--->
     <title>Lernfortschritt-Tracker</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -42,34 +37,14 @@
       </select>
       <button id="reload" class="ghost" type="button">Refresh Tasklist</button>
     </div>
-    <ul id="tasks">
-
-    </ul>
-
-    <div id="loadState" class="muted" style="margin-top: 10px"></div>
+    
     <div id="errorGetBox" class="error"></div>
-    <div id="list" class="list"></div>
-    <br /><br /><br /><br />
-    <div class="row">
-      <input id="search" type="search" placeholder="Suche nach Titel…" />
-      <select id="statusFilter">
-        <option value="all">Alle Status</option>
-        <option value="open">Nur open</option>
-        <option value="in_progress">Nur in_progress</option>
-        <option value="done">Nur done</option>
-      </select>
-      <button id="send" class="ghost" type="button">Send JSON</button>
-    </div>
-    <div id="loadState" class="muted" style="margin-top: 10px"></div>
-    <div id="errorSendBox" class="error"></div>
-    <div id="list" class="list"></div>
-  <script src="getModules.js" type="module" defer></script>
-   <script  src="fetchModuleJson.js" type="module" defer></script>
-    <script  src="index.js" type="module" defer></script>
-</body>
-</body>
+    <ul id="tasks"></ul>
 
-    <script src="getModules.js" type="module" defer></script>
+    <div id="loadState" class="muted" style="margin-top: 10px"></div>
+
+    <script src="statusFilter.js" type="module" defer></script>
     <script src="fetchModuleJson.js" type="module" defer></script>
+    <script src="index.js" type="module" defer></script>
   </body>
 </html>

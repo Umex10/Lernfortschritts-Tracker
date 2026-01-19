@@ -15,15 +15,6 @@
   "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
   "default":false 
   },
-  {},
-{
-  "id": 2,
-  "title": "Deutsch für Anfänger",
-  "category": "Sprachen",
-  "status": "done",
-  "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
-  "default":false 
-  },
   {
   "id": 3,
   "title": "Business Englisch Kommunikation",

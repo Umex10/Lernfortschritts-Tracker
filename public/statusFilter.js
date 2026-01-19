@@ -1,19 +1,17 @@
+import { filterByStatus } from "../src/utils/filter.js";
+
 const statusSelect = document.getElementById("statusFilter");
 
-statusSelect.addEventListener("change", () => {
-    localStorage.setItem("status", statusSelect.value);
-    applyFilter();
-});
+if (statusSelect) {
+    statusSelect.addEventListener("change", () => {
+        localStorage.setItem("status", statusSelect.value);
+        applyFilter();
+    });
+}
 
 function applyFilter() {
-    const modules =
-        JSON.parse(localStorage.getItem("moduleData")) || [];
-
+    const modules = JSON.parse(localStorage.getItem("moduleData")) || [];
     const statusFilter = localStorage.getItem("status");
-
-    const filteredModules = statusFilter
-        ? modules.filter((m) => m.status === statusFilter)
-        : modules;
-
+    const filteredModules = filterByStatus(modules, statusFilter);
     console.log(filteredModules);
 }

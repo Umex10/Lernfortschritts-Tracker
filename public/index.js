@@ -4,7 +4,10 @@ const reload = document.getElementById("reload");
 const taskList = document.getElementById("tasks");
 
 export const setTasks = (newModules) => {
+  if (!taskList) return;
   taskList.innerHTML = ""; // reset
+
+  if (!newModules || newModules.length === 0) return;
 
   newModules.forEach(module => {
     const li = document.createElement("li");
@@ -24,9 +27,14 @@ export const setTasks = (newModules) => {
   });
 };
 
-reload.addEventListener("click", () => {
-  console.log("Reloaded")
-  const newModules = getModules();
-  setTasks(newModules);
-});
+if (reload) {
+  reload.addEventListener("click", () => {
+    console.log("Reloaded");
+    const newModules = getModules();
+    setTasks(newModules);
+  });
+}
 
+// Initial load
+const initialModules = getModules();
+setTasks(initialModules);
