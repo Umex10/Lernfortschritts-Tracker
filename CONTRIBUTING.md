@@ -25,8 +25,7 @@ Es gibt zwei Möglichkeiten, den Server zu starten:
 ## Branching-Strategie
 
 - Arbeite **immer auf deinem eigenen Branch**.
-- Wähle einen **klaren und aussagekräftigen Branch-Namen**, z. B. `feature/login-form` oder `bugfix/navbar-fix`.
-- Der Branch sollte nur **ein Feature oder einen Bugfix** enthalten.
+- Wähle deinen Namen als **Branch-Namen**, z. B. `thomas`.
 
 ---
 

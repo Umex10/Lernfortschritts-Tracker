@@ -1,3 +1,36 @@
+[{
+  "id": 1,
+  "title": "Wie man die Lernplattform benutzt",
+  "category": "Hilfe",
+  "description": "Einführung in die Plattform-Navigation und Funktionen",
+  "default":true, 
+  "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Frotschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
+},
 {
-  "id": 22
-}
+  "id": 2,
+  "title": "Deutsch für Anfänger",
+  "category": "Sprachen",
+  "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
+  "default":false 
+  },
+  {
+  "id": 3,
+  "title": "Business Englisch Kommunikation",
+  "category": "Sprachen",
+  "description": "Professionelles Englisch für Arbeit und Geschäft",
+  "default":false 
+  },
+  {
+  "id": 4,
+  "title": "Webprogrammierung Grundlagen",
+  "category": "Programmirung",
+  "description": "HTML, CSS und JavaScript für Webentwicklung",
+  "default":false 
+},
+{
+  "id": 5,
+  "title": "Wirtschaftsgrundlagen",
+  "category": "Wirtschaft",
+  "description": "Grundkonzepte der Mikro- und Makroökonomie",
+  "default" : false
+}]
