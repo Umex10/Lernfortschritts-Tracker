@@ -1,26 +1,24 @@
-import { STATUS } from "/constants/status.js";
-
-// Dummy data for tests
+// Dummy data for tests (status-Werte als Strings passend zu public/constants/status.js)
 export const modules = [
   // IN PROGRESS
   {
     id: 1,
     title: "Grundlagen von JavaScript",
-    status: STATUS.IN_PROGRESS,
+    status: "in progress",
     category: "Web Development",
     description: "Variablen, Funktionen, Scope und grundlegende Syntax."
   },
   {
     id: 2,
     title: "React Hooks verstehen",
-    status: STATUS.IN_PROGRESS,
+    status: "in progress",
     category: "Frontend",
     description: "useState, useEffect und der Umgang mit State."
   },
   {
     id: 3,
     title: "REST APIs mit Express",
-    status: STATUS.IN_PROGRESS,
+    status: "in progress",
     description: "Aufbau von Endpoints, Request/Response-Zyklus."
   },
 
@@ -28,21 +26,21 @@ export const modules = [
   {
     id: 4,
     title: "HTML & CSS Basics",
-    status: STATUS.DONE,
+    status: "done",
     category: "Web Development",
     description: "Grundstruktur von Webseiten und Styling mit CSS."
   },
   {
     id: 5,
     title: "Git Grundlagen",
-    status: STATUS.DONE,
+    status: "done",
     category: "Tooling",
     description: "Committen, Branches, Merge und Rebase."
   },
   {
     id: 6,
     title: "TypeScript Basics",
-    status: STATUS.DONE,
+    status: "done",
     description: "Typen, Interfaces und grundlegende Typisierung."
   },
 
@@ -50,21 +48,21 @@ export const modules = [
   {
     id: 7,
     title: "Next.js Routing",
-    status: STATUS.TODO,
+    status: "todo",
     category: "Frontend",
     description: "File-based Routing und Layouts in Next.js."
   },
   {
     id: 8,
     title: "Authentifizierung mit JWT",
-    status: STATUS.TODO,
+    status: "todo",
     category: "Backend",
     description: "Login-Flow, Tokens und Absicherung von Endpoints."
   },
   {
     id: 9,
     title: "Testing mit Jest",
-    status: STATUS.TODO,
+    status: "todo",
     description: "Unit-Tests und grundlegende Teststrategien."
   }
 ];
