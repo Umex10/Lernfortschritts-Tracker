@@ -16,12 +16,10 @@ return groupedByStatus;
 
 // Only run this code in the browser (not during tests)
 if (typeof localStorage !== 'undefined') {
-  localStorage.setItem("modules", JSON.stringify(modules));
-
-  let newModules = [];
-
+  
+  let newModules = []
   try {
-    const loadedModules = localStorage.getItem("modules");
+    const loadedModules = localStorage.getItem("moduleData");
     if (loadedModules) {
       newModules = JSON.parse(loadedModules);
     }

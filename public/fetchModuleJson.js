@@ -1,4 +1,4 @@
-fetch("/module.json")
+fetch("module.json")
     .then((res) => {
         if (!res.ok) {
             throw new Error("Fetch failed");
