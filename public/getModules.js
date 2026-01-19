@@ -1,5 +1,4 @@
-import { modules } from "../tests/fixtures/dummyData.js";
-import { STATUS } from "./constants/status.js";
+import { STATUS } from "../constants/status.js";
 
 // Filter the status out, and create 3 different arrays
 export const groupByStatus = (newModules) => {
@@ -22,6 +21,7 @@ if (typeof localStorage !== 'undefined') {
     const loadedModules = localStorage.getItem("moduleData");
     if (loadedModules) {
       newModules = JSON.parse(loadedModules);
+      console.log(newModules)
     }
   } catch (error) {
     console.error("Fehler beim Laden der Module aus localStorage", error);
