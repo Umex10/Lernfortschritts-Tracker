@@ -19,12 +19,11 @@ export function setTasks(modules) {
       return;
     }
 
-    // Variable berechnen (Leerzeichen durch Unterstriche ersetzen)
+    //SInce some status values have a space letter
     const statusClass = `status-${module.status.replace(/\s+/g, "_")}`;
 
     const li = document.createElement("li");
     
-    // HIER: Die Klasse dem li-Element hinzufügen
     li.className = `task-item ${statusClass}`; 
     li.setAttribute("data-testid", `task-${module.id}`);
 
