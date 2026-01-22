@@ -1,14 +1,13 @@
-fetch("module.json")
-    .then((res) => {
-        if (!res.ok) {
-            throw new Error("Fetch failed");
-        }
-        return res.json();
-    })
-    .then((data) => {
-        localStorage.setItem("moduleData", JSON.stringify(data));
-        console.log("module.json saved to localStorage");
-    })
-    .catch((err) => {
-        console.error(err);
-    });
+import { fetchAndSaveModules } from "../src/services/moduleService.js";
+import { setTasks } from "./index.js";
+
+// Fetch data and notify when ready
+fetchAndSaveModules()
+  .then((data) => {
+    console.log("Data loaded, dispatching event");
+    // Trigger initial render
+    setTasks(data);
+    // Dispatch custom event for other modules
+    window.dispatchEvent(new CustomEvent('modulesLoaded', { detail: data }));
+  })
+  .catch(console.error);

@@ -1,12 +1,19 @@
-[
-  {
-    "id": 1,
-    "title": "Wie man die Lernplattform benutzt",
-    "category": "Hilfe",
-    "status": "done",
-    "description": "Einführung in die Plattform-Navigation und Funktionen",
-    "default": true,
-    "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Frotschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
+[{
+  "id": 1,
+  "title": "Wie man die Lernplattform benutzt",
+  "category": "Hilfe",
+  "status": "done",
+  "description": "Einführung in die Plattform-Navigation und Funktionen",
+  "default":true, 
+  "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Frotschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
+},
+{
+  "id": 2,
+  "title": "Deutsch für Anfänger",
+  "category": "Sprachen",
+  "status": "done",
+  "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
+  "default":false 
   },
   {
     "id": 2,
@@ -36,7 +43,7 @@
     "id": 5,
     "title": "Webprogrammierung Grundlagen",
     "category": "Programmirung",
-    "status": "open",
+    "status": "todo",
     "description": "HTML, CSS und JavaScript für Webentwicklung",
     "default": false
   },

@@ -5,8 +5,11 @@ const app = express(); // server
 const PT = 3000;
 
 // middlewares
-app.use(express.static(path.join(process.cwd(), "public"))); 
+app.use(express.static(path.join(process.cwd(), "public")));
 app.use("/tests", express.static(path.join(process.cwd(), "tests")));
+
+// optional: Business-Logik unter /src kann bei Bedarf auch ausgeliefert werden
+app.use("/src", express.static(path.join(process.cwd(), "src")));
 
 app.get("/module.json", (req, res) => {
   res.sendFile(path.join(process.cwd(), "server/module.json"));
