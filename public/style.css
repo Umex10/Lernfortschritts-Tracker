@@ -1,6 +1,8 @@
-* {
-  box-sizing: border-box;
-  font-family: Inter, system-ui, Arial, sans-serif;
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ff9900;
 }
 
 body {
@@ -16,126 +18,88 @@ body {
   overflow-y: hidden;
 }
 
-.container {
-  max-width: 720px;
-  margin: 40px auto;
-  padding: 0 20px;
+.row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-h1 {
-  text-align: center;
-  color: #1d4ed8;
-  font-size: 36px;
-  margin-bottom: 4px;
-}
-
-.subtitle {
-  text-align: center;
-  color: #64748b;
-  margin-bottom: 28px;
-}
-
-/* 修正点：类名从 .search 改为 .searchInput */
-.searchInput {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.searchInput input {
-  width: 100%;
-  padding: 14px 14px 14px 44px;
-  /* 左边留出 44px 给图标 */
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  font-size: 15px;
+input[type="search"],
+select {
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #4b5563;
+  background-color: #020617;
+  color: #e5e7eb;
   outline: none;
 }
 
-.searchInput input:focus {
-  border-color: #1d4ed8;
+input[type="search"]::placeholder {
+  color: #6b7280;
 }
 
-.searchInput svg {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  stroke: #94a3b8;
+button {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #f97316, #eab308);
+  color: #0b1120;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
 }
 
-/* filter */
-label {
-  display: block;
-  margin-bottom: 6px;
-  color: #475569;
-  font-size: 14px;
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.05);
 }
 
-select {
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid #f97316;
+  color: #f97316;
+}
+
+#tasks {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
   width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  font-size: 15px;
-  margin-bottom: 24px;
-  background: #fff;
-  cursor: pointer;
+  max-width: 640px;
 }
 
-/* moduleCard */
-.moduleCard {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+#tasks li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.8);
 }
 
-.moduleCard:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-}
-
-.card-header-row {
+.task-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  cursor: pointer;
+  gap: 0.75rem;
+  align-items: baseline;
 }
 
-.ModuleTitle {
-  font-size: 1.1rem;
+.task-title {
   font-weight: 600;
-  color: #1f2937;
-  margin: 0;
 }
 
-.category-badge {
-  font-size: 0.85rem;
-  color: #64748b;
-  background: #f1f5f9;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-/* status */
-.status {
-  width: fit-content;
-  display: inline-block;
-  padding: 4px 12px;
+.task-category {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  margin-top: 4px;
+  background: rgba(55, 65, 81, 0.9);
+  color: #e5e7eb;
 }
 
 .task-container-category-status {
@@ -182,113 +146,69 @@ select {
   overflow: hidden;
 }
 
-.progress-bar {
-  background-color: #2563eb;
-  height: 100%;
-  width: 0%;
-  transition: width 0.4s ease;
+.task-expl {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #9ca3af;
 }
 
-.module-detail-content {
-  display: none;
-  margin-top: 12px;
+.muted {
+  font-size: 0.85rem;
+  color: #9ca3af;
 }
 
-.moduleCard.is-open .module-detail-content {
-  display: block;
+.error {
+  display: none; /* standardmäßig versteckt */
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(220, 38, 38, 0.1);
+  color: #fecaca;
+  border: 1px solid rgba(248, 113, 113, 0.8);
 }
 
-.moduleCard .arrow::before {
-  content: "";
-  display: inline-block;
-  border: solid #94a3b8;
-  border-width: 0 2px 2px 0;
-  padding: 4px;
-  transform: rotate(45deg);
+.list {
+  margin-top: 0.75rem;
+  width: 100%;
+  max-width: 640px;
 }
 
-.moduleCard.is-open .arrow::before {
-  transform: rotate(225deg);
+/* Responsive Layout */
+@media (max-width: 640px) {
+  body {
+    padding: 1.5rem 1rem;
+    justify-content: flex-start;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input[type="search"],
+  select,
+  button {
+    width: 100%;
+  }
+
+  #tasks,
+  .list {
+    max-width: 100%;
+  }
 }
 
-.arrow {
-  width: 12px;
-  height: 12px;
-}
+@media (min-width: 1024px) {
+  body {
+    padding: 2rem 0;
+  }
 
-/* Detail content form styles */
-.detail-item {
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-}
-
-.button-container {
-  flex-direction: row !important;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.detail-item label {
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 4px;
-  font-size: 14px;
-}
-
-.detail-item input,
-.detail-item textarea,
-.detail-item select {
-  padding: 8px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.detail-item input:focus,
-.detail-item textarea:focus,
-.detail-item select:focus {
-  border-color: #1d4ed8;
-}
-
-.detail-item textarea {
-  resize: vertical;
-  min-height: 60px;
-}
-
-.detail-item select {
-  cursor: pointer;
-}
-
-.detail-item .save-btn,
-.detail-item .delete-btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.detail-item .save-btn {
-  background-color: #16a34a;
-  color: white;
-  flex: 0 0 50%;
-}
-
-.detail-item .save-btn:hover {
-  background-color: #15803d;
-}
-
-.detail-item .delete-btn {
-  background-color: #dc2626;
-  color: white;
-  flex: 0 0 30%;
-}
-
-.detail-item .delete-btn:hover {
-  background-color: #b91c1c;
+  #tasks,
+  .list {
+    max-width: 720px;
+  }
 }
