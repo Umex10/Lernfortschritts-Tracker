@@ -1,50 +1,51 @@
-[{
-  "id": 1,
-  "title": "Wie man die Lernplattform benutzt",
-  "category": "Hilfe",
-  "status": "done",
-  "description": "Einführung in die Plattform-Navigation und Funktionen",
-  "default":true, 
-  "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Frotschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
-},
-{
-  "id": 2,
-  "title": "Deutsch für Anfänger",
-  "category": "Sprachen",
-  "status": "done",
-  "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
-  "default":false 
-  },
-  {},
-{
-  "id": 2,
-  "title": "Deutsch für Anfänger",
-  "category": "Sprachen",
-  "status": "done",
-  "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
-  "default":false 
+[
+  {
+    "id": 1,
+    "title": "Wie man die Lernplattform benutzt",
+    "category": "Hilfe",
+    "status": "done",
+    "description": "Einführung in die Plattform-Navigation und Funktionen",
+    "default": true,
+    "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Frotschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
   },
   {
-  "id": 3,
-  "title": "Business Englisch Kommunikation",
-  "category": "Sprachen",
-  "status": "in progress",
-  "description": "Professionelles Englisch für Arbeit und Geschäft",
-  "default":false 
+    "id": 2,
+    "title": "Deutsch für Anfänger",
+    "category": "Sprachen",
+    "status": "done",
+    "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
+    "default": false
   },
   {
-  "id": 4,
-  "title": "Webprogrammierung Grundlagen",
-  "category": "Programmirung",
-  "status": "todo",
-  "description": "HTML, CSS und JavaScript für Webentwicklung",
-  "default":false 
-},
-{
-  "id": 5,
-  "title": "Wirtschaftsgrundlagen",
-  "category": "Wirtschaft",
-  "status": "done",
-  "description": "Grundkonzepte der Mikro- und Makroökonomie",
-  "default" : false
-}]
+    "id": 3,
+    "title": "Deutsch für Forgeschrittene",
+    "category": "Sprachen",
+    "status": "done",
+    "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
+    "default": false
+  },
+  {
+    "id": 4,
+    "title": "Business Englisch Kommunikation",
+    "category": "Sprachen",
+    "status": "in progress",
+    "description": "Professionelles Englisch für Arbeit und Geschäft",
+    "default": false
+  },
+  {
+    "id": 5,
+    "title": "Webprogrammierung Grundlagen",
+    "category": "Programmirung",
+    "status": "open",
+    "description": "HTML, CSS und JavaScript für Webentwicklung",
+    "default": false
+  },
+  {
+    "id": 6,
+    "title": "Wirtschaftsgrundlagen",
+    "category": "Wirtschaft",
+    "status": "done",
+    "description": "Grundkonzepte der Mikro- und Makroökonomie",
+    "default": false
+  }
+]

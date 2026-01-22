@@ -28,21 +28,27 @@ h1 {
   margin-bottom: 28px;
 }
 
-/* search */
-.search {
+/* 修正点：类名从 .search 改为 .searchInput */
+.searchInput {
   position: relative;
   margin-bottom: 20px;
 }
 
-.search input {
+.searchInput input {
   width: 100%;
   padding: 14px 14px 14px 44px;
+  /* 左边留出 44px 给图标 */
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   font-size: 15px;
+  outline: none;
 }
 
-.search svg {
+.searchInput input:focus {
+  border-color: #1d4ed8;
+}
+
+.searchInput svg {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -66,8 +72,10 @@ select {
   font-size: 15px;
   margin-bottom: 24px;
   background: #fff;
+  cursor: pointer;
 }
 
+/* moduleCard */
 .moduleCard {
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
@@ -77,13 +85,10 @@ select {
   display: flex;
   flex-direction: column;
   gap: 12px;
-
-
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-
 
 .moduleCard:hover {
   border-color: #d1d5db;
@@ -96,6 +101,7 @@ select {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  cursor: pointer;
 }
 
 .ModuleTitle {
@@ -105,15 +111,24 @@ select {
   margin: 0;
 }
 
+.category-badge {
+  font-size: 0.85rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* status */
 .status {
   width: fit-content;
   display: inline-block;
   padding: 4px 12px;
   border-radius: 999px;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .status-in-progress {
@@ -129,4 +144,125 @@ select {
 .status-open {
   background-color: #f3f4f6;
   color: #4b5563;
+}
+
+/* Dashboard Progress */
+.progress-bar-container {
+  background-color: #e2e8f0;
+  border-radius: 999px;
+  height: 8px;
+  width: 100%;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: #2563eb;
+  height: 100%;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.module-detail-content {
+  display: none;
+  margin-top: 12px;
+}
+
+.moduleCard.is-open .module-detail-content {
+  display: block;
+}
+
+.moduleCard .arrow::before {
+  content: "";
+  display: inline-block;
+  border: solid #94a3b8;
+  border-width: 0 2px 2px 0;
+  padding: 4px;
+  transform: rotate(45deg);
+}
+
+.moduleCard.is-open .arrow::before {
+  transform: rotate(225deg);
+}
+
+.arrow {
+  width: 12px;
+  height: 12px;
+}
+
+/* Detail content form styles */
+.detail-item {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-item label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.detail-item input,
+.detail-item textarea,
+.detail-item select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.detail-item input:focus,
+.detail-item textarea:focus,
+.detail-item select:focus {
+  border-color: #1d4ed8;
+}
+
+.detail-item textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.detail-item select {
+  cursor: pointer;
+}
+
+.detail-item .save-btn,
+.detail-item .delete-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.detail-item .save-btn {
+  background-color: #16a34a;
+  color: white;
+  flex: 0 0 50%;
+}
+
+.detail-item .save-btn:hover {
+  background-color: #15803d;
+}
+
+.detail-item .delete-btn {
+  background-color: #dc2626;
+  color: white;
+  flex: 0 0 30%;
+}
+
+.detail-item .delete-btn:hover {
+  background-color: #b91c1c;
 }

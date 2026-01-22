@@ -52,7 +52,7 @@ function renderModules(modules) {
     const container = document.getElementById("moduleList");
     container.innerHTML = "";
 
-    modules.forEach(module => {
+    modules.forEach((module, index) => {
         const card = document.createElement("div");
         card.className = "moduleCard";
 
@@ -67,27 +67,37 @@ function renderModules(modules) {
         categoryBadge.className = "category-badge";
         categoryBadge.textContent = module.category;
 
+        const details = document.createElement("span");
+        details.className = "arrow";
+
         headerRow.appendChild(title);
         headerRow.appendChild(categoryBadge);
+        headerRow.appendChild(details);
 
         const status = document.createElement("div");
         status.className = `status ${getStatusClass(module.status)}`;
         status.textContent = module.status;
 
+        const detailContent = document.createElement("div");
+        detailContent.className = "module-detail-content";
+        renderDetail(detailContent, index, modules);
+
         card.appendChild(headerRow);
         card.appendChild(status);
+        card.appendChild(detailContent);
 
-        card.addEventListener('click', () => {
-            const detailContent = document.getElementById("moduleDetailContent");
-            detailContent.innerHTML = `
-                <div class="detail-item"><strong>Title:</strong> ${module.title}</div>
-                <div class="detail-item"><strong>Category:</strong> ${module.category}</div>
-                <div class="detail-item"><strong>Status:</strong> ${module.status}</div>
-                <div class="detail-item"><strong>Description:</strong> ${module.description}</div>
-                <div class="detail-item"><strong>Default:</strong> ${module.default}</div>
-            `;
+        card.addEventListener('click', (e) => {
+            const header = e.target.closest('.card-header-row');
+            if (!header) return;
+
+            const card = header.closest('.moduleCard');
+            if (!card) return;
+
+            card.classList.toggle('is-open');
         });
 
         container.appendChild(card);
     });
+
+    addButtonListeners(modules);
 }
