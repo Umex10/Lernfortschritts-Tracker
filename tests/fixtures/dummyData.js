@@ -1,68 +1,74 @@
-// Dummy data for tests (status-Werte als Strings passend zu public/constants/status.js)
-export const modules = [
-  // IN PROGRESS
+/**
+ * Test fixture data that mirrors the structure of module.json for predictable E2E scenarios.
+ */
+
+// Test fixture data that mirrors the structure of module.json
+// Used for E2E tests to ensure predictable test scenarios
+
+export const testModules = [
   {
     id: 1,
-    title: "Grundlagen von JavaScript",
-    status: "in progress",
-    category: "Web Development",
-    description: "Variablen, Funktionen, Scope und grundlegende Syntax."
+    title: "JavaScript Basics",
+    category: "Programming",
+    status: "done",
+    description: "Learn fundamental JavaScript concepts",
+    default: true,
+    explanation: "Introduction to variables, functions, and control flow"
   },
   {
     id: 2,
-    title: "React Hooks verstehen",
-    status: "in progress",
-    category: "Frontend",
-    description: "useState, useEffect und der Umgang mit State."
+    title: "German for Beginners",
+    category: "Languages",
+    status: "done",
+    description: "German language fundamentals",
+    default: false
   },
   {
     id: 3,
-    title: "REST APIs mit Express",
+    title: "Business English Communication",
+    category: "Languages",
     status: "in progress",
-    description: "Aufbau von Endpoints, Request/Response-Zyklus."
+    description: "Professional English for business contexts",
+    default: false
   },
-
-  // DONE
   {
     id: 4,
-    title: "HTML & CSS Basics",
-    status: "done",
-    category: "Web Development",
-    description: "Grundstruktur von Webseiten und Styling mit CSS."
+    title: "Web Development Fundamentals",
+    category: "Programming",
+    status: "todo",
+    description: "HTML, CSS and JavaScript for web development",
+    default: false
   },
   {
     id: 5,
-    title: "Git Grundlagen",
+    title: "Economics Fundamentals",
+    category: "Economics",
     status: "done",
-    category: "Tooling",
-    description: "Committen, Branches, Merge und Rebase."
+    description: "Basic concepts of micro and macro economics",
+    default: false
   },
   {
     id: 6,
-    title: "TypeScript Basics",
-    status: "done",
-    description: "Typen, Interfaces und grundlegende Typisierung."
+    title: "Advanced Web Development",
+    category: "Programming",
+    status: "todo",
+    description: "React, Vue and modern frameworks",
+    default: false
   },
-
-  // TODO
   {
     id: 7,
-    title: "Next.js Routing",
-    status: "todo",
-    category: "Frontend",
-    description: "File-based Routing und Layouts in Next.js."
+    title: "Python for Data Science",
+    category: "Programming",
+    status: "in progress",
+    description: "Data analysis and visualization with Python",
+    default: false
   },
   {
     id: 8,
-    title: "Authentifizierung mit JWT",
+    title: "Database Design",
+    category: "Programming",
     status: "todo",
-    category: "Backend",
-    description: "Login-Flow, Tokens und Absicherung von Endpoints."
-  },
-  {
-    id: 9,
-    title: "Testing mit Jest",
-    status: "todo",
-    description: "Unit-Tests und grundlegende Teststrategien."
+    description: "SQL and NoSQL database fundamentals",
+    default: false
   }
 ];

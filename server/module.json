@@ -1,41 +1,40 @@
 [{
   "id": 1,
-  "title": "Wie man die Lernplattform benutzt",
-  "category": "Hilfe",
+  "title": "How to Use the Learning Platform",
+  "category": "Help",
   "status": "done",
-  "description": "Einführung in die Plattform-Navigation und Funktionen",
-  "default":true, 
-  "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Frotschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
+  "description": "Introduction to platform navigation and core features",
+  "default": true,
+  "explanation": "This course guides you through the learning platform. You will learn how to navigate between courses, track your progress, use interactive exercises, and access additional resources."
 },
 {
   "id": 2,
-  "title": "Deutsch für Anfänger",
-  "category": "Sprachen",
+  "title": "German for Beginners",
   "status": "done",
-  "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
-  "default":false 
-  },
-  {
+  "description": "Basic German grammar, vocabulary, and conversation",
+  "default": false,
+  "waitingFor": 1
+},
+{
   "id": 3,
-  "title": "Business Englisch Kommunikation",
-  "category": "Sprachen",
+  "title": "Business English Communication",
   "status": "in progress",
-  "description": "Professionelles Englisch für Arbeit und Geschäft",
-  "default":false 
-  },
-  {
+  "description": "Professional English for work and business",
+  "default": false,
+  "waitingFor": 1
+},
+{
   "id": 4,
-  "title": "Webprogrammierung Grundlagen",
-  "category": "Programmirung",
+  "title": "Web Development Fundamentals",
+  "category": "Programming",
   "status": "todo",
-  "description": "HTML, CSS und JavaScript für Webentwicklung",
-  "default":false 
+  "default": false
 },
 {
   "id": 5,
-  "title": "Wirtschaftsgrundlagen",
-  "category": "Wirtschaft",
+  "title": "Economics Fundamentals",
+  "category": "Economics",
   "status": "done",
-  "description": "Grundkonzepte der Mikro- und Makroökonomie",
-  "default" : false
+  "default": false,
+  "waitingFor": 2
 }]

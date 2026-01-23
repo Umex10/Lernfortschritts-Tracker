@@ -1,50 +1,64 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Ein Lernfortschrittstracker zum Planen, Tracken von Lernzielen, Kursen oder einen Fortschritt."
+      content="A learning progress tracker to plan and track learning goals, courses, and overall progress."
     />
     <meta
       name="keywords"
-      content="Lernen, Lernfortschritt, Tracker, Ziele, Aufgaben, Kurse, Studenten, studieren, Statistik, Fortschritt, Dashboard"
+      content="learning, progress tracker, goals, tasks, courses, students, studying, statistics, dashboard"
     />
 
     <!-- Open Graph Tag -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Lernfortschrittstracker" />
+    <meta property="og:title" content="Learning Progress Tracker" />
     <meta
       property="og:description"
-      content="Tracke Lernziele, Sessions und Fortschritt mit der besten App der Welt"
+      content="Track learning goals, sessions, and progress with an intuitive dashboard."
     />
     <meta property="og:url" content="https://google.com" />
-    <meta property="og:locale" content="de_AT" />
-    <title>Lernfortschritt-Tracker</title>
+    <meta property="og:locale" content="en_US" />
+    <title>Learning Progress Tracker</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
-    <h1>Lernfortschritt-Tracker</h1>
+    <h1>Learning Progress Tracker</h1>
     <div class="row">
-      <input id="search" type="search" placeholder="Suche nach Titel…" />
-      <select id="statusFilter">
-        <option value="all">Alle Status</option>
-        <option value="open">Nur open</option>
-        <option value="in_progress">Nur in_progress</option>
-        <option value="done">Nur done</option>
+      <input
+        id="search"
+        type="search"
+        placeholder="Search by title…"
+        data-testid="search-filter"
+      />
+      <select id="statusFilter" data-testid="status-filter">
+        <option value="all" data-testid="filter-all">All</option>
+        <option value="todo" id="todo" data-testid="filter-todo">todo</option>
+        <option
+          value="in progress"
+          id="in_progress"
+          data-testid="filter-in-progress"
+        >
+          in progress
+        </option>
+        <option value="done" id="done" data-testid="filter-done">done</option>
       </select>
       <button id="reload" class="ghost" type="button">Refresh Tasklist</button>
     </div>
-    
+
+    <div id="progressbar"></div>
+
     <div id="errorGetBox" class="error"></div>
     <ul id="tasks"></ul>
 
     <div id="loadState" class="muted" style="margin-top: 10px"></div>
 
-    <script src="statusFilter.js" type="module" defer></script>
-    <script src="fetchModuleJson.js" type="module" defer></script>
+    <script src="initializeTasks.js" type="module" defer></script>
     <script src="index.js" type="module" defer></script>
+    <script src="progressPercentage.js" type="module" defer></script>
+    <script src="handleFilter.js" type="module" defer></script>
   </body>
 </html>

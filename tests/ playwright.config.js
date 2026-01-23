@@ -1,3 +1,6 @@
+/**
+ * Playwright configuration for running the E2E test suite against the dev server.
+ */
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
