@@ -22,7 +22,8 @@
 <body>
   <h1>Lernfortschritt-Tracker</h1>
   <div class="row">
-    <input id="search" type="search" placeholder="Suche nach Titel…" />
+    <input id="search" type="search" placeholder="Suche nach Titel…"
+    data-testid="search-filter" />
     <select id="statusFilter" data-testid="status-filter">
       <option value="all" data-testid="filter-all">All</option>
       <option value="todo" id="todo" data-testid="filter-todo">todo</option>
@@ -37,10 +38,9 @@
 
   <div id="loadState" class="muted" style="margin-top: 10px"></div>
 
-  <script src="statusFilter.js" type="module" defer></script>
-  <script src="fetchModuleJson.js" type="module" defer></script>
+  <script src="initializeTasks.js" type="module" defer></script>
   <script src="index.js" type="module" defer></script>
-  <script src="searchFilter.js" type="module" defer></script>
+  <script src="handleFilter.js" type="module" defer></script>
 </body>
 
 </html>

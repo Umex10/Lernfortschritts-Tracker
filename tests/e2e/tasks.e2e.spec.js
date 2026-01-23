@@ -2,57 +2,159 @@ import { test, expect } from "@playwright/test";
 import { STATUS } from "../../src/constants/status.js";
 
 const statuses = [STATUS.TODO, STATUS.IN_PROGRESS, STATUS.DONE];
+const ValidSearches = ["Wirtschafts", "Business", "Deutsch"];
+const InvalidSearches = ["X", "Fahrrad", "22"];
+const validCombinations = [
+  {
+    status: STATUS.DONE,
+    search: "Wirtschafts"
+  },
+  {
+    status: STATUS.IN_PROGRESS,
+    search: "Business"
+  },
+  {
+    status: STATUS.TODO,
+    search: "Web"
+  },
+];
 
-test.beforeEach(async ({ page }) => {
-  await page.goto("http://localhost:3000");
-  // Clear localStorage to prevent stale test data from interfering
-  await page.evaluate(() => localStorage.clear());
-});
+const invalidCombinations = [
+  {
+    status: STATUS.IN_PROGRESS,
+    search: "Wirtschafts"
+  },
+  {
+    status: STATUS.TODO,
+    search: "Business"
+  },
+  {
+    status: STATUS.TODO,
+    search: "Deutsch"
+  },
+];
 
-test(`initialized content from module.json`, async ({ page }) => {
-  // Wait for initial list to load
-  await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
+test.describe("Task list filtering", () => {
 
-  // Select only <li> elements, not their children
-  const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
-  const count = await allTasks.count();
-
-  expect(count).toBeGreaterThan(0);
-// Reload page to fetch fresh data from module.json
-  await page.reload();
-})
-
-for (const status of statuses) {
-  test(`filter '${status}' tasks shows only '${status}' tasks`, async ({ page }) => {
-
-    // Reload page to fetch fresh data from module.json
+  test.beforeEach(async ({ page }) => {
+    await page.goto("http://localhost:3000");
+    await page.evaluate(() => localStorage.clear());
     await page.reload();
+  });
 
-    // Wait for initial list to load
-    await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
+  test.describe("Initialization", () => {
+    test("initialized content from module.json", async ({ page }) => {
+      await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
 
-    // Select the status filter
-    await page.selectOption('[data-testid="status-filter"]', status);
+      const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
+      const count = await allTasks.count();
 
-    // Wait briefly for the event handler to update the list
-    await page.waitForTimeout(500);
+      expect(count).toBeGreaterThan(0);
+    });
+  });
 
-    // Select only <li> elements, not their children
-    const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
-    const count = await allTasks.count();
+  test.describe("Status filter", () => {
+    for (const status of statuses) {
+      test(`filter '${status}' tasks shows only '${status}' tasks`, async ({ page }) => {
+        await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
 
-    // Verify that at least one task is displayed
-    expect(count).toBeGreaterThan(0);
+        await page.getByTestId("status-filter").selectOption(status);
+        await page.waitForTimeout(500);
 
-    // Check each individual task
-    for (let i = 0; i < count; i++) {
-      const task = allTasks.nth(i);
-      const statusElement = task.locator('[data-testid="task-status"]');
+        const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
+        const count = await allTasks.count();
 
-      const actualStatus = (await statusElement.textContent())?.trim();
+        expect(count).toBeGreaterThan(0);
 
-      await expect(actualStatus).toBe(status);
+        for (let i = 0; i < count; i++) {
+          const task = allTasks.nth(i);
+          const statusElement = task.getByTestId("task-status");
+
+          const actualStatus = (await statusElement.textContent())?.trim();
+          expect(actualStatus).toBe(status);
+        }
+      });
     }
   });
-}
 
+  test.describe("Search filter – valid input", () => {
+    for (const search of ValidSearches) {
+      test(`filter '${search}' tasks shows only matching tasks`, async ({ page }) => {
+        await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
+
+        const searchFilter = page.getByTestId("search-filter");
+        await searchFilter.fill(search.toLowerCase());
+
+        await page.waitForTimeout(500);
+
+        const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
+        const count = await allTasks.count();
+
+        expect(count).toBeGreaterThan(0);
+
+        for (let i = 0; i < count; i++) {
+          const task = allTasks.nth(i);
+          const title = task.getByTestId("task-title");
+
+          const actualTitle = (await title.textContent())?.trim().toLowerCase();
+          expect(actualTitle).toContain(search.toLowerCase());
+        }
+      });
+    }
+  });
+
+  test.describe("Search filter – invalid input", () => {
+    for (const search of InvalidSearches) {
+      test(`filter '${search}' returns no tasks`, async ({ page }) => {
+        await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
+
+        const searchFilter = page.getByTestId("search-filter");
+        await searchFilter.fill(search.toLowerCase());
+
+        await page.waitForTimeout(500);
+
+        const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
+        const count = await allTasks.count();
+
+        expect(count).toBe(0);
+      });
+    }
+  });
+
+  test.describe("Search filter + Status Filter - Valid Cases", () => {
+    for (const combination of validCombinations) {
+      test(`Search and status should work simultaneously with: ${combination.search} + ${combination.status}`, async ({ page }) => {
+        await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
+
+        await page.getByTestId("search-filter").fill(combination.search.toLowerCase());
+        await page.getByTestId("status-filter").selectOption(combination.status);
+        
+        await page.waitForTimeout(500);
+
+        const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
+        const count = await allTasks.count();
+
+        expect(count).toBeGreaterThan(0);
+      });
+    }
+  });
+
+  test.describe("Search filter + Status Filter - Invalid Cases", () => {
+    for (const combination of invalidCombinations) {
+      test(`Search and status should return empty for: ${combination.search} + ${combination.status}`, async ({ page }) => {
+        await page.waitForSelector('#tasks li[data-testid^="task-"]', { timeout: 10000 });
+
+        await page.getByTestId("search-filter").fill(combination.search.toLowerCase());
+        await page.getByTestId("status-filter").selectOption(combination.status);
+        
+        await page.waitForTimeout(500);
+
+        const allTasks = page.locator('#tasks > li[data-testid^="task-"]');
+        const count = await allTasks.count();
+
+        expect(count).toBe(0);
+      });
+    }
+  });
+
+});

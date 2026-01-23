@@ -1,4 +1,4 @@
-import { getModules } from "./getModules.js";
+import { initializeTasks } from "./initializeTasks.js";
 
 const reload = document.getElementById("reload");
 
@@ -45,14 +45,6 @@ export function setTasks(modules) {
 if (reload) {
   reload.addEventListener("click", () => {
     console.log("Reloaded");
-    const newModules = getModules();
-    setTasks(newModules);
+    initializeTasks();
   });
-}
-
-// Initial load will be triggered by fetchModuleJson.js
-// But we also check if data is already there (for page refreshes)
-const initialModules = getModules();
-if (initialModules && initialModules.length > 0) {
-  setTasks(initialModules);
 }
