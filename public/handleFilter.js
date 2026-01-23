@@ -1,3 +1,6 @@
+/**
+ * Applies search and status filters on tasks based on user input and localStorage state.
+ */
 import { setTasks } from "./index.js";
 import { handleFilter } from "../src/utils/filter.js";
 

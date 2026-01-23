@@ -1,3 +1,8 @@
+/* 
+   Typography & Base Styles
+ */
+
+/* Main heading */
 h1 {
   font-weight: 700;
   font-size: 2rem;
@@ -5,6 +10,7 @@ h1 {
   color: #ff9900;
 }
 
+/* Body layout: centered flex container with dark gradient background */
 body {
   margin: 0;
   min-height: 100vh;
@@ -19,6 +25,11 @@ body {
   overflow-y: auto;
 }
 
+/*
+   Form Controls & Input Elements
+    */
+
+/* Horizontal row for search, filter, and buttons */
 .row {
   display: flex;
   gap: 0.75rem;
@@ -26,6 +37,7 @@ body {
   margin-bottom: 1rem;
 }
 
+/* Search input and select dropdown styling */
 input[type="search"],
 select {
   padding: 0.55rem 0.75rem;
@@ -36,10 +48,12 @@ select {
   outline: none;
 }
 
+/* Placeholder text color */
 input[type="search"]::placeholder {
   color: #6b7280;
 }
 
+/* Button base styling with gradient background */
 button {
   padding: 0.55rem 1rem;
   border-radius: 999px;
@@ -51,23 +65,31 @@ button {
   transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
 }
 
+/* Button hover effect: lift up with shadow */
 button:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
   filter: brightness(1.05);
 }
 
+/* Button active state */
 button:active {
   transform: translateY(0);
   box-shadow: none;
 }
 
+/* Ghost button variant: transparent with border */
 .ghost {
   background: transparent;
   border: 1px solid #f97316;
   color: #f97316;
 }
 
+/* 
+   Task List Container
+   */
+
+/* Main task list container */
 #tasks {
   list-style: none;
   padding: 0;
@@ -76,14 +98,38 @@ button:active {
   max-width: 640px;
 }
 
+/* Individual task item card */
 #tasks li {
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
   border-radius: 0.75rem;
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(55, 65, 81, 0.8);
+  position: relative;
 }
 
+/* Locked task state: dimmed and non-interactive */
+#tasks li.locked {
+  opacity: 0.5;
+  pointer-events: none; /* Prevents all interactions */
+  filter: grayscale(50%);
+}
+
+/* Lock icon indicator for locked tasks */
+#tasks li.locked::before {
+  content: "🔒";
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 1.2rem;
+  z-index: 10;
+}
+
+/*
+   Task Card Components
+    */
+
+/* Task header: contains title and status/category */
 .task-header {
   display: flex;
   justify-content: space-between;
@@ -91,10 +137,12 @@ button:active {
   align-items: baseline;
 }
 
+/* Task title text */
 .task-title {
   font-weight: 600;
 }
 
+/* Task category badge */
 .task-category {
   font-size: 0.8rem;
   padding: 0.2rem 0.55rem;
@@ -103,6 +151,14 @@ button:active {
   color: #e5e7eb;
 }
 
+/* Empty category: hidden but keeps space */
+.task-category.empty {
+  background: transparent;
+  padding: 0;
+  visibility: hidden;
+}
+
+/* Container for category and status badges */
 .task-container-category-status {
   display: flex;
   justify-content: center;
@@ -110,6 +166,11 @@ button:active {
   gap: 0.25rem;
 }
 
+/* 
+   Status Badges & Dropdown
+    */
+
+/* Base status badge styling (legacy, kept for compatibility) */
 .task-status {
   font-size: 0.8rem;
   padding: 0.2rem 0.55rem;
@@ -118,14 +179,40 @@ button:active {
   text-transform: capitalize; 
 }
 
+/* Status dropdown select: styled to look like a badge with dropdown icon */
+.task-status-select {
+  font-size: 0.8rem;
+  padding: 0.2rem 1.5rem 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  appearance: none; /* Remove default browser styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+  /* Custom dropdown arrow icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='black' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+  background-size: 0.7rem;
+}
+
+/* Hover effect for status dropdown */
+.task-status-select:hover {
+  opacity: 0.9;
+}
+
+/* Status color variants */
 .status-todo {
-  background-color: #f97316;
+  background-color: #f97316; /* Orange */
   color: black;
 }
 
-
 .status-in_progress {
-  background-color: #e5e7eb;
+  background-color: #e5e7eb; /* Light gray */
   color: black;
 }
 
@@ -134,30 +221,87 @@ button:active {
   color: black;
 }
 
+/* 
+   Task Description & Archive
+    */
 
+<<<<<<< HEAD
+=======
+/* Task description text with line clamp */
+>>>>>>> umejr
 .task-desc {
   margin: 0.35rem 0 0;
   font-size: 0.9rem;
   color: #d1d5db;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+/* Empty description: hidden but keeps space */
+.task-desc.empty {
+  visibility: hidden;
+  margin: 0;
+}
+
+/* Task status change history (collapsible) */
+.task-archive {
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+}
+
+/* Collapsible summary text (clickable) */
+.task-archive summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #f97316;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Summary hover effect */
+.task-archive summary:hover {
+  opacity: 0.8;
+}
+
+/* Archive history list */
+.archive-list {
+  list-style: none;
+  padding: 0.5rem 0 0 0;
+  margin: 0;
+}
+
+/* Individual archive entry */
+.archive-list li {
+  padding: 0.25rem 0;
+  color: #d1d5db;
+  border: none;
+  background: transparent;
+}
+
+/* 
+   Utility Classes
+    */
+
+/* Task explanation text (if used) */
 .task-expl {
   margin: 0.35rem 0 0;
   font-size: 0.8rem;
   color: #9ca3af;
 }
 
+/* Muted/subtle text */
 .muted {
   font-size: 0.85rem;
   color: #9ca3af;
 }
 
+/* Error message box (hidden by default) */
 .error {
-  display: none; /* standardmäßig versteckt */
+  display: none;
   margin-top: 0.5rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
@@ -166,13 +310,18 @@ button:active {
   border: 1px solid rgba(248, 113, 113, 0.8);
 }
 
+/* Generic list container */
 .list {
   margin-top: 0.75rem;
   width: 100%;
   max-width: 640px;
 }
 
-/* Responsive Layout */
+/* 
+   Responsive Design
+  */
+
+/* Mobile layout adjustments */
 @media (max-width: 640px) {
   body {
     padding: 1.5rem 1rem;
@@ -184,17 +333,19 @@ button:active {
     text-align: center;
   }
 
+  /* Stack controls vertically on mobile */
   .row {
     flex-direction: column;
     align-items: stretch;
   }
 
+  /* Full-width inputs on mobile */
   input[type="search"],
   select,
   button {
     width: 100%;
   }
-
+  
   #tasks,
   .list {
     max-width: 100%;

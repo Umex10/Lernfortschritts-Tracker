@@ -1,91 +1,90 @@
 # Contributing Guidelines
 
-Vielen Dank, dass du zum Projekt beitragen möchtest! Bitte halte dich an die folgenden Regeln, um die Zusammenarbeit für alle sauber und effizient zu gestalten.
+Thank you for contributing to this project! Please follow these guidelines to keep collaboration clean and efficient for everyone.
 
 ---
-## Server starten
+## Starting the Server
 
-### Verfügbare Befehle
+### Available Commands
 
-Es gibt zwei Möglichkeiten, den Server zu starten:
+There are two main ways to start the server:
 
-- **`npm run dev`** – Startet den Server im **Entwicklungsmodus** mit automatischem Neuladen bei Dateiänderungen (verwendet `nodemon`)
-- **`npm run start`** – Startet den Server im **Produktionsmodus** ohne automatisches Neuladen
+- **`npm run dev`** – Starts the server in **development mode** with automatic reload on file changes (uses `nodemon`).
+- **`npm run start`** – Starts the server in **production mode** without automatic reload.
 
-### Unterschied zwischen `dev` und `start`
+### Difference Between `dev` and `start`
 
-- **`npm run dev`**: Für die **Entwicklung** gedacht. Der Server startet neu, sobald du Änderungen an den Dateien vornimmst. Das spart Zeit, da du den Server nicht manuell neu starten musst.
-- **`npm run start`**: Für den **produktiven Einsatz** gedacht. Der Server läuft stabil und startet nicht automatisch neu.
+- **`npm run dev`**: Intended for **development**. The server restarts automatically when you change files, so you do not need to restart it manually.
+- **`npm run start`**: Intended for **production-like usage**. The server runs stably and does not restart automatically.
 
-### Automatische Installation der Abhängigkeiten
+### Automatic Dependency Installation
 
-**Beide Befehle führen automatisch `npm install` aus**, bevor der Server gestartet wird. Du musst also nicht manuell `npm install` ausführen – die Abhängigkeiten werden bei jedem Start aktualisiert.
+**Both commands run `npm install` automatically** before starting the server. You do not need to run `npm install` manually – dependencies are ensured on each start.
 
 ---
-## Branching-Strategie
+## Branching Strategy
 
-- Arbeite **immer auf deinem eigenen Branch**.
-- Wähle deinen Namen als **Branch-Namen**, z. B. `thomas`.
+- Always work on **your own branch**.
+- Use your name as the **branch name**, e.g. `thomas`.
 
 ---
 
 ## Workflow
 
-1. **Entwicklung auf dem eigenen Branch**
-   - Alle Änderungen werden zunächst in deinem eigenen Branch umgesetzt.
-   - Stelle sicher, dass dein Code **funktioniert** und keine offensichtlichen Fehler enthält.
+1. **Develop on your own branch**
+   - Implement all changes on your personal branch first.
+   - Make sure your code **works** and does not contain obvious errors.
 
-2. **Merge in `develop`**
-   - Sobald dein Feature oder Bugfix fertig ist, merge deinen Branch in `develop`.
-   - **Konflikte müssen vorher gelöst** werden, bevor der Merge abgeschlossen wird.
-   - Der Merge sollte **erst nach eigenem Test** durchgeführt werden.
+2. **Merge into `develop`**
+   - Once your feature or bugfix is ready, merge your branch into `develop`.
+   - **Resolve conflicts beforehand** before completing the merge.
+   - Only merge after you have **tested your changes**.
 
-3. **Code Review & Merge in `main`**
-   - Änderungen auf `main` erfolgen **nur nach Review durch das gesamte Team**.
-   - Ziel: **Qualität sichern und Fehler vermeiden**.
-   - Nach erfolgreichem Review kann dein Code in `main` gemerged werden.
+3. **Code Review & Merge into `main`**
+   - Changes to `main` happen **only after review by the whole team**.
+   - Goal: **Ensure quality and avoid regressions**.
+   - After a successful review, your code can be merged into `main`.
 
 ---
 
-## Code-Qualität
+## Code Quality
 
-- Schreibe **sauberen und lesbaren Code**.
-- Achte auf **einheitliche Formatierung** und Stilrichtlinien.
-- Teste deinen Code, bevor du einen Pull Request erstellst.
+- Write **clean and readable code**.
+- Keep **consistent formatting** and follow existing style conventions.
+- Test your code before creating a pull request.
 
 ---
 
 ## Pull Requests
 
-- Erstelle einen **klaren und verständlichen Pull Request**.
-- Beschreibe **kurz, was geändert wurde** und **warum**.
-- Verweise auf **relevante Issues** (falls vorhanden).
+- Create a **clear and understandable pull request**.
+- Briefly **describe what you changed** and **why**.
+- Reference **related issues** (if any).
 
 ---
 
-## Verhalten im Team
+## Team Collaboration
 
-- Sei **respektvoll** und **hilfsbereit** im Review-Prozess.
-- Feedback wird **konstruktiv** gegeben und sollte **akzeptiert** werden.
-- Ziel ist eine **effiziente und angenehme Zusammenarbeit**.
-
----
-
-## Dokumentation
-
-Um die Dokumentation konsistent zu halten, gilt folgende Struktur:
-
-- Zentrale Bereichsdokumente liegen im Ordner [docs](docs).
-   - Frontend / statische Dateien: [docs/public.md](docs/public.md)
-   - Tests / Playwright / Fixtures: [docs/tests.md](docs/tests.md)
-- Spezifische Dokumentation zu einzelnen Ordnern liegt als README.md direkt im jeweiligen Ordner
-   (z. B. [public/constants/README.md](public/constants/README.md)).
-
-Richtlinien:
-- Wenn du einem bestehenden Bereich (z. B. Tests, public) neue Funktionen hinzufügst, erweitere die passende Datei unter [docs](docs).
-- Wenn du einen neuen Unterordner mit wiederverwendbarem Code anlegst, lege dort eine eigene README.md an und beschreibe kurz Zweck, wichtigste Dateien und Konventionen.
-- Verlinke neue Dokus nach Möglichkeit aus der zentralen [README.md](README.md) oder aus [docs](docs), damit sie leicht auffindbar sind.
+- Be **respectful** and **helpful** during reviews.
+- Give feedback **constructively** and be open to receiving it.
+- The goal is an **efficient and pleasant collaboration**.
 
 ---
 
-Vielen Dank für deine Mitarbeit! 🚀
+## Documentation
+
+To keep documentation consistent, follow this structure:
+
+- Central area documentation is located in the [docs](docs) folder.
+  - Frontend / static files: [docs/public.md](docs/public.md)
+  - Tests / Playwright / fixtures: [docs/tests.md](docs/tests.md)
+- Specific documentation for individual folders lives as a README.md directly in that folder (e.g. [public/constants/README.md](public/constants/README.md)).
+
+Guidelines:
+- If you add new functionality to an existing area (e.g. tests, public), extend the appropriate file under [docs](docs).
+- If you create a new subfolder with reusable code, add a README.md there describing the purpose, key files, and conventions.
+- Whenever possible, link new docs from the central [README.md](README.md) or from [docs](docs) so they are easy to find.
+
+---
+
+Thank you for your contribution! 🚀

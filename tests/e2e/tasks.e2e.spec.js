@@ -1,42 +1,45 @@
+/**
+ * E2E tests for task list initialization and filtering (status, search, combined).
+ */
 import { test, expect } from "@playwright/test";
 import { STATUS } from "../../src/constants/status.js";
 import { testModules } from "../fixtures/dummyData.js";
+import { testModules } from "../fixtures/dummyData.js";
 
 const statuses = [STATUS.TODO, STATUS.IN_PROGRESS, STATUS.DONE];
-const ValidSearches = ["Wirtschafts", "Business", "Deutsch"];
-const InvalidSearches = ["X", "Fahrrad", "22"];
+const ValidSearches = ["Economics", "Business", "German"];
+const InvalidSearches = ["X", "Bike", "22"];
 const validCombinations = [
   {
     status: STATUS.DONE,
-    search: "Wirtschafts"
+    search: "Economics",
   },
   {
     status: STATUS.IN_PROGRESS,
-    search: "Business"
+    search: "Business",
   },
   {
     status: STATUS.TODO,
-    search: "Web"
+    search: "Web",
   },
 ];
 
 const invalidCombinations = [
   {
     status: STATUS.IN_PROGRESS,
-    search: "Wirtschafts"
+    search: "Economics",
   },
   {
     status: STATUS.TODO,
-    search: "Business"
+    search: "Business",
   },
   {
     status: STATUS.TODO,
-    search: "Deutsch"
+    search: "German",
   },
 ];
 
 test.describe("Task list filtering", () => {
-
   test.beforeEach(async ({ page }) => {
     // Intercept the module.json request and respond with test data
     await page.route('**/module.json', async (route) => {
@@ -48,7 +51,6 @@ test.describe("Task list filtering", () => {
     });
 
     await page.goto("http://localhost:3000");
-    
     // Clear localStorage and inject test data
     await page.evaluate((modules) => {
       localStorage.clear();
@@ -86,8 +88,7 @@ test.describe("Task list filtering", () => {
         for (let i = 0; i < count; i++) {
           const task = allTasks.nth(i);
           const statusElement = task.getByTestId("task-status");
-
-          const actualStatus = (await statusElement.textContent())?.trim();
+          const actualStatus = await statusElement.inputValue();
           expect(actualStatus).toBe(status);
         }
       });

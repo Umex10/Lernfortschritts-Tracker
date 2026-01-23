@@ -1,3 +1,6 @@
+/**
+ * Service for fetching module data and synchronizing it with localStorage.
+ */
 import {STATUS} from "../constants/status.js"
 
 // Fetches the module.json and saves it to localStorage

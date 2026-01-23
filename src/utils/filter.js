@@ -1,3 +1,6 @@
+/**
+ * Utility functions to filter modules by status and search text.
+ */
 
 export const handleFilter = (modules, status, text) => {
 

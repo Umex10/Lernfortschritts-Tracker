@@ -1,34 +1,35 @@
-# Doku: Tests
+# Tests Documentation
 
-## Übersicht
+## Overview
 
-Die Tests liegen gesammelt im Ordner [tests](../tests).
+All tests are located in the [tests](../tests) folder.
 
-Struktur:
-- [tests/e2e](../tests/e2e) – End-to-End-Tests mit Playwright.
-- [tests/fixtures](../tests/fixtures) – Wiederverwendbare Testdaten und Hilfsdateien.
-- [tests/playwright.config.js](../tests/playwright.config.js) – Konfiguration für Playwright.
+Structure:
+- [tests/e2e](../tests/e2e) – End-to-end tests using Playwright
+- [tests/fixtures](../tests/fixtures) – Reusable test data and helper files
+- [tests/playwright.config.js](../tests/playwright.config.js) – Playwright configuration
 
-## Ordner `tests/e2e`
+## Folder `tests/e2e`
 
-In `tests/e2e` liegen End-to-End-Tests (E2E), aktuell mit Playwright.
+The `tests/e2e` folder contains Playwright end-to-end tests.
 
-Aktuell:
-- [tests/e2e/groupByStatus.spec.js](../tests/e2e/groupByStatus.spec.js): Testet die Funktion `groupByStatus` mit den Dummy-Daten aus `tests/fixtures` und prüft die Gruppierung nach Status.
+Currently:
+- [tests/e2e/tasks.e2e.spec.js](../tests/e2e/tasks.e2e.spec.js): Tests task list initialization and filtering (status filter, search filter, combined filters) using dummy data from `tests/fixtures`.
+- [tests/e2e/status-history.e2e.spec.js](../tests/e2e/status-history.e2e.spec.js): Tests task status persistence and history (archive) behavior across page reloads.
 
-Zweck:
-- Sicherstellen, dass wichtige Funktionen der App (z.B. Gruppierung nach Status) stabil bleiben.
+Purpose:
+- Ensure that key user-facing flows (loading tasks, filtering by status and search, and preserving status/history) remain stable.
 
-## Ordner `tests/fixtures`
+## Folder `tests/fixtures`
 
-In `tests/fixtures` liegen wiederverwendbare Testdaten und Hilfsdateien.
+The `tests/fixtures` folder contains reusable test data and helpers.
 
-Aktuell:
-- [tests/fixtures/dummyData.js](../tests/fixtures/dummyData.js): Beispiel-Module mit unterschiedlichen Status-Werten (als Strings), genutzt u.a. in den E2E-Tests.
+Currently:
+- [tests/fixtures/dummyData.js](../tests/fixtures/dummyData.js): Example modules with different status values (as strings), used by the E2E tests.
 
-Zweck:
-- Zentrale Sammlung von Testdaten, damit sie nicht in jedem Test dupliziert werden müssen.
+Purpose:
+- Central place for test data so it does not need to be duplicated in each test.
 
-Richtlinien:
-- Neue gemeinsame Testdaten hier ablegen.
-- Struktur der Daten möglichst stabil halten, weil mehrere Tests darauf zugreifen können.
+Guidelines:
+- Add new shared test data here.
+- Keep the data structure as stable as possible, as multiple tests may depend on it.

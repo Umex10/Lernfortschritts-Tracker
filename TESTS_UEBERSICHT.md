@@ -1,27 +1,28 @@
-# Tests – Übersicht
+# Tests – Overview
 
-Dieses Dokument beschreibt grob die Teststruktur des Projekts, speziell die E2E-Tests und die dazugehörigen Fixtures.
+This document briefly describes the test structure of the project, especially the E2E tests and their fixtures.
 
-## Ordner `tests/e2e`
+## Folder `tests/e2e`
 
-In `tests/e2e` liegen End-to-End-Tests (E2E), aktuell mit Playwright.
+The `tests/e2e` folder contains end-to-end (E2E) tests written with Playwright.
 
-Aktuell:
-- `groupByStatus.spec.js`: Testet die Funktion `groupByStatus` mit den Dummy-Daten aus `tests/fixtures` und prüft die Gruppierung nach Status.
+Currently:
+- `tasks.e2e.spec.js`: Tests task list initialization and filtering (status filter, search filter, combined filters) using dummy data from `tests/fixtures`.
+- `status-history.e2e.spec.js`: Tests task status persistence and the status history (archive) across page reloads.
 
-Zweck:
-- Sicherstellen, dass die App aus Nutzersicht (Ende-zu-Ende) korrekt funktioniert.
+Purpose:
+- Ensure that the app works correctly from a user perspective (end-to-end).
 
-## Ordner `tests/fixtures`
+## Folder `tests/fixtures`
 
-In `tests/fixtures` liegen wiederverwendbare Testdaten und Hilfsdateien.
+The `tests/fixtures` folder contains reusable test data and helper files.
 
-Aktuell:
-- `dummyData.js`: Beispiel-Module mit unterschiedlichen Status-Werten (`STATUS.TODO`, `STATUS.IN_PROGRESS`, `STATUS.DONE`), genutzt u.a. in den E2E-Tests.
+Currently:
+- `dummyData.js`: Example modules with different status values (`STATUS.TODO`, `STATUS.IN_PROGRESS`, `STATUS.DONE`), used by the E2E tests.
 
-Zweck:
-- Zentrale Sammlung von Testdaten, damit sie nicht in jedem Test dupliziert werden müssen.
+Purpose:
+- Central collection of test data so it does not need to be duplicated in each test.
 
-Hinweis:
-- Neue gemeinsame Testdaten hier ablegen.
-- Struktur der Daten möglichst stabil halten, weil mehrere Tests darauf zugreifen können.
+Notes:
+- Place new shared test data here.
+- Keep the data structure as stable as possible, because multiple tests may depend on it.
