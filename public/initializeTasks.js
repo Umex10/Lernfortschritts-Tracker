@@ -1,5 +1,4 @@
 import { fetchModule } from "../src/services/moduleService.js";
-import { setTasks } from "./index.js";
 
 const errorGetBox = document.getElementById("errorGetBox");
 
@@ -7,12 +6,6 @@ const errorGetBox = document.getElementById("errorGetBox");
 export async function initializeTasks(){
   try {
     const data = await fetchModule();
-    
-    // Save to localStorage
-    localStorage.setItem("moduleData", JSON.stringify(data));
-    
-    // Initial load of the tasks
-    setTasks(data);
     
     // custom event
     window.dispatchEvent(new CustomEvent('modulesLoaded', { detail: data }));

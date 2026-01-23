@@ -4,6 +4,12 @@ import { handleFilter } from "../src/utils/filter.js";
 const search = document.getElementById("search");
 const statusSelect = document.getElementById("statusFilter");
 
+// Restore saved status immediately when script loads
+const savedStatus = localStorage.getItem("status");
+if (savedStatus && savedStatus !== "all") {
+  statusSelect.value = savedStatus;
+}
+
 function applyFilters() {
   const modules = JSON.parse(localStorage.getItem("moduleData")) || [];
   const filteredModules = handleFilter(modules, statusSelect.value, search.value);
@@ -19,10 +25,9 @@ statusSelect.addEventListener("change", () => {
 
 // Apply filters when modules are loaded
 window.addEventListener('modulesLoaded', () => {
-  const savedStatus = localStorage.getItem("status");
-  if (savedStatus && savedStatus !== "all") {
-    statusSelect.value = savedStatus;
-  }
   applyFilters();
 });
 
+if (localStorage.getItem("moduleData")) {
+  applyFilters();
+}

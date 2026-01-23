@@ -1,3 +1,5 @@
+import {STATUS} from "../constants/status.js"
+
 // Fetches the module.json and saves it to localStorage
 export const fetchModule = async () => {
   try {
@@ -10,6 +12,8 @@ export const fetchModule = async () => {
     if (!res.ok) throw new Error("Fetch failed");
 
     const modules = await res.json();
+    // We need to set every task to "todo" if localstorage has no data
+    modules.map(module => module.status = STATUS.TODO);
     localStorage.setItem("moduleData", JSON.stringify(modules));
     console.log("module.json saved to localStorage");
     return modules;
