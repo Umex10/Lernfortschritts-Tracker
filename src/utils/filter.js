@@ -1,21 +1,23 @@
-// Pure business logic for filtering modules by status
-// Erwartung: "status" ist genau einer der Werte aus STATUS ("todo", "in progress", "done")
-export const filterByStatus = (modules, status) => {
+
+export const handleFilter = (modules, status, text) => {
+
+  const filteredByStatus = filterByStatus(modules, status);
+  const filteredBySearch = filterBySearch(filteredByStatus, text)
+
+  return filteredBySearch;
+}
+
+const filterByStatus = (modules, status) => {
   if (!status || status === "all") return modules;
-  return modules.filter((m) => m.status === status);
+  return modules.filter(m => m.status === status);
 };
 
-export const filterBySearch = (modules, text) => {
-  // Achtung: document Zugriff in Utils ist nicht optimal für Tests, aber hier funktional
-  const statusSelect = document.getElementById("statusFilter");
-  if (!text) {
-      // Wenn Suchtext leer ist, nur Status-Filter anwenden
-      return statusSelect ? filterByStatus(modules, statusSelect.value) : modules;
-  }
+const filterBySearch = (modules, text) => {
+  if (!text) return modules;
 
-  // Case-Insensitive Suche
   const lowerText = text.toLowerCase();
-  return modules.filter((m) => 
-    (m.title && m.title.toLowerCase().includes(lowerText))
+
+  return modules.filter(m =>
+    m.title?.toLowerCase().includes(lowerText)
   );
-}
+};
