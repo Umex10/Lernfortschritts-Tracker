@@ -1,4 +1,4 @@
-// Zentrale Status-Konstanten, gemeinsam für Browser und Tests
+// Central status constants shared between browser and tests
 export const STATUS = {
   TODO: "todo",
   IN_PROGRESS: "in progress",

@@ -1,4 +1,4 @@
-## 📚 Lernfortschritts-Tracker
+## 📚 Learning Progress Tracker
 
 A web application for structured tracking of your learning progress. Users can view a list of predefined learning content, set their current learning status for each item, and add personal comments. Progress is visualized clearly, learning content can be searched or filtered, and all data is persistently stored so your learning progress is preserved across visits.
 

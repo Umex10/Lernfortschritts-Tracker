@@ -1,15 +1,10 @@
-# Doku: Ordner `public`
+# Documentation: `public` Folder (Legacy Overview)
 
-## Ordner `public/constants`
-In `public/constants` liegen Konstanten, die im Frontend mehrfach verwendet werden.
+This file provides a short legacy overview. For the most up-to-date and detailed documentation of the `public` folder, see:
 
-Aktuell:
-- `status.js`: Zentrale Definition der möglichen Lernstatus (`STATUS.TODO`, `STATUS.IN_PROGRESS`, `STATUS.DONE`).
+- [docs/public.md](docs/public.md)
 
-Zweck:
-- Gemeinsamer Ort für Werte wie Enums/Konfigurationen.
-- Vermeidet Magic Strings im Code und stellt sicher, dass alle Module dieselben Status-Werte verwenden.
-
-Hinweis:
-- Neue, wiederverwendete Konstanten hier ablegen.
-- Namen stabil halten, da z.B. Tests darauf zugreifen.
+Key points:
+- The `public` folder contains all browser-loaded assets (HTML, CSS, JS).
+- Status values are defined centrally in `src/constants/status.js` as `STATUS.TODO`, `STATUS.IN_PROGRESS`, `STATUS.DONE`.
+- Shared constants help avoid magic strings and keep browser code and tests in sync.

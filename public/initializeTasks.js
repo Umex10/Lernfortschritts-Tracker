@@ -12,7 +12,7 @@ export async function initializeTasks(){
     
   } catch (error) {
     // error message
-    errorGetBox.textContent = "Beim Laden der Lerninhalte ist ein Fehler aufgetreten.";
+    errorGetBox.textContent = "An error occurred while loading learning content.";
     errorGetBox.style.display = "block";
   }
 }

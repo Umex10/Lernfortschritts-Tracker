@@ -1,7 +1,7 @@
 {
-  "name": "lernfortschritts-tracker",
+  "name": "learning-progress-tracker",
   "version": "1.0.0",
-  "description": "Der Lernfortschritts-Tracker ist eine Webanwendung zur strukturierten Verfolgung des eigenen Lernprozesses. Nutzer sehen eine Liste vordefinierter Lerninhalte, können für jeden Inhalt ihren aktuellen Lernstatus festlegen und persönliche Kommentare hinzufügen. Der Fortschritt wird übersichtlich visualisiert, Lerninhalte können gesucht oder gefiltert werden, und alle Daten bleiben dauerhaft gespeichert, sodass der Lernstand auch bei einem späteren Besuch erhalten bleibt.",
+  "description": "The Learning Progress Tracker is a web application for structured tracking of your learning process. Users can view a list of predefined learning content, set their current learning status for each item, and add personal notes. Progress is clearly visualized, learning content can be searched or filtered, and all data is stored persistently so the learning state is preserved across visits.",
   "main": "index.js",
   "scripts": {
     "testui": "playwright test --ui",

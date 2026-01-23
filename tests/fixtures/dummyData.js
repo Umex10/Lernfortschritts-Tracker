@@ -13,7 +13,7 @@ export const testModules = [
   },
   {
     id: 2,
-    title: "Deutsch für Anfänger",
+    title: "German for Beginners",
     category: "Languages",
     status: "done",
     description: "German language fundamentals",
@@ -29,7 +29,7 @@ export const testModules = [
   },
   {
     id: 4,
-    title: "Webprogrammierung Grundlagen",
+    title: "Web Development Fundamentals",
     category: "Programming",
     status: "todo",
     description: "HTML, CSS and JavaScript for web development",
@@ -37,7 +37,7 @@ export const testModules = [
   },
   {
     id: 5,
-    title: "Wirtschaftsgrundlagen",
+    title: "Economics Fundamentals",
     category: "Economics",
     status: "done",
     description: "Basic concepts of micro and macro economics",

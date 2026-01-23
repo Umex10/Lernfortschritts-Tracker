@@ -8,13 +8,13 @@ const PT = 3000;
 app.use(express.static(path.join(process.cwd(), "public")));
 app.use("/tests", express.static(path.join(process.cwd(), "tests")));
 
-// optional: Business-Logik unter /src kann bei Bedarf auch ausgeliefert werden
+// optional: Business logic under /src can also be served if needed
 app.use("/src", express.static(path.join(process.cwd(), "src")));
 
 app.get("/module.json", (req, res) => {
   res.sendFile(path.join(process.cwd(), "server/module.json"));
 });
 
-app.listen(PT, () => console.log(`Server läuft auf http://localhost:${PT}`));
+app.listen(PT, () => console.log(`Server is running at http://localhost:${PT}`));
 
 
