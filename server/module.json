@@ -1,19 +1,12 @@
-[{
-  "id": 1,
-  "title": "Wie man die Lernplattform benutzt",
-  "category": "Hilfe",
-  "status": "done",
-  "description": "Einführung in die Plattform-Navigation und Funktionen",
-  "default":true, 
-  "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Frotschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
-},
-{
-  "id": 2,
-  "title": "Deutsch für Anfänger",
-  "category": "Sprachen",
-  "status": "done",
-  "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
-  "default":false 
+[
+  {
+    "id": 1,
+    "title": "Wie man die Lernplattform benutzt",
+    "category": "Hilfe",
+    "status": "done",
+    "description": "Einführung in die Plattform-Navigation und Funktionen",
+    "default": true,
+    "explanation": "Dieser Kurs führt Sie durch die Lernplattform. Sie lernen, wie Sie zwischen Kursen navigieren, Ihren Fortschritt verfolgen, interaktive Übungen nutzen und auf zusätzliche Ressourcen zugreifen."
   },
   {
     "id": 2,
@@ -25,10 +18,10 @@
   },
   {
     "id": 3,
-    "title": "Deutsch für Forgeschrittene",
+    "title": "Deutsch für Fortgeschrittene",
     "category": "Sprachen",
     "status": "done",
-    "description": "Deutsche Grundgrammatik, Wortschatz und Konversation",
+    "description": "Komplexe Satzstrukturen und Business-Vokabular",
     "default": false
   },
   {
@@ -42,7 +35,7 @@
   {
     "id": 5,
     "title": "Webprogrammierung Grundlagen",
-    "category": "Programmirung",
+    "category": "Programmierung",
     "status": "todo",
     "description": "HTML, CSS und JavaScript für Webentwicklung",
     "default": false
@@ -53,6 +46,54 @@
     "category": "Wirtschaft",
     "status": "done",
     "description": "Grundkonzepte der Mikro- und Makroökonomie",
+    "default": false
+  },
+  {
+    "id": 7,
+    "title": "UI/UX Design Essentials",
+    "category": "Design",
+    "status": "in progress",
+    "description": "Grundlagen der benutzerzentrierten Gestaltung und Prototyping",
+    "default": false
+  },
+  {
+    "id": 8,
+    "title": "Projektmanagement Agil",
+    "category": "Business",
+    "status": "todo",
+    "description": "Einführung in Scrum, Kanban und agile Methoden",
+    "default": false
+  },
+  {
+    "id": 9,
+    "title": "Künstliche Intelligenz im Alltag",
+    "category": "Technologie",
+    "status": "todo",
+    "description": "Verständnis von LLMs und effektives Prompt Engineering",
+    "default": false
+  },
+  {
+    "id": 10,
+    "title": "Zeitmanagement & Produktivität",
+    "category": "Soft Skills",
+    "status": "done",
+    "description": "Methoden zur Selbstorganisation und Stressbewältigung",
+    "default": false
+  },
+  {
+    "id": 11,
+    "title": "Python für Data Science",
+    "category": "Programmierung",
+    "status": "in progress",
+    "description": "Datenanalyse und Visualisierung mit Pandas und Matplotlib",
+    "default": false
+  },
+  {
+    "id": 12,
+    "title": "Digitales Marketing 101",
+    "category": "Wirtschaft",
+    "status": "todo",
+    "description": "Grundlagen von SEO, SEA und Social Media Strategien",
     "default": false
   }
 ]

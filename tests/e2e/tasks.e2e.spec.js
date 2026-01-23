@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { STATUS } from "../../src/constants/status.js";
+import { testModules } from "../fixtures/dummyData.js";
 
 const statuses = [STATUS.TODO, STATUS.IN_PROGRESS, STATUS.DONE];
 const ValidSearches = ["Wirtschafts", "Business", "Deutsch"];
@@ -37,8 +38,24 @@ const invalidCombinations = [
 test.describe("Task list filtering", () => {
 
   test.beforeEach(async ({ page }) => {
+    // Intercept the module.json request and respond with test data
+    await page.route('**/module.json', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(testModules)
+      });
+    });
+
     await page.goto("http://localhost:3000");
-    await page.evaluate(() => localStorage.clear());
+    
+    // Clear localStorage and inject test data
+    await page.evaluate((modules) => {
+      localStorage.clear();
+      localStorage.setItem("moduleData", JSON.stringify(modules));
+    }, testModules);
+    
+    // Reload to trigger the app with test data
     await page.reload();
   });
 
