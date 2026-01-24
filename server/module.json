@@ -5,7 +5,8 @@
   "status": "done",
   "description": "Introduction to platform navigation and core features",
   "default": true,
-  "explanation": "This course guides you through the learning platform. You will learn how to navigate between courses, track your progress, use interactive exercises, and access additional resources."
+  "explanation": "This course guides you through the learning platform. You will learn how to navigate between courses, track your progress, use interactive exercises, and access additional resources.",
+  "waitingTasks": [2, 3]
 },
 {
   "id": 2,
@@ -13,7 +14,8 @@
   "status": "done",
   "description": "Basic German grammar, vocabulary, and conversation",
   "default": false,
-  "waitingFor": 1
+  "waitingFor": 1,
+  "waitingTasks": [5]
 },
 {
   "id": 3,

@@ -29,3 +29,22 @@ export const fetchModule = async () => {
     throw err;
   }
 };
+
+// Fetches module.json from server and overwrites localStorage
+export const refetchModule = async () => {
+  try {
+    const res = await fetch("module.json");
+
+    if (!res.ok) throw new Error("Fetch failed");
+
+    const modules = await res.json();
+    // Reset all tasks to "todo" status
+    modules.map(module => module.status = STATUS.TODO);
+    localStorage.setItem("moduleData", JSON.stringify(modules));
+    console.log("module.json refetched and localStorage updated");
+    return modules;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};

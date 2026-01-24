@@ -3,6 +3,7 @@
  */
 import { STATUS } from "../src/constants/status.js";
 import { initializeTasks } from "./initializeTasks.js";
+import { refetchModule } from "../src/services/moduleService.js";
 
 const reload = document.getElementById("reload");
 
@@ -23,7 +24,7 @@ export function setTasks(modules) {
       return;
     }
 
-    //SInce some status values have a space letter
+    // Since some status values have a space letter
     const statusClass = `status-${module.status.replace(/\s+/g, "_")}`;
 
     // Add empty class if category or description is missing
@@ -125,6 +126,15 @@ export function setTasks(modules) {
 
         // Update status
         moduleToUpdate.status = newStatus;
+
+        // If setting to TODO, also reset all tasks that depend on this task
+        if (newStatus === STATUS.TODO || newStatus === STATUS.IN_PROGRESS) {
+          const dependentTasks = modules.filter((m) => m.waitingFor === taskId);
+          dependentTasks.forEach((task) => {
+            task.status = STATUS.TODO;
+          });
+        }
+
         localStorage.setItem("moduleData", JSON.stringify(modules));
 
         // Progressbars updaten
@@ -132,16 +142,33 @@ export function setTasks(modules) {
 
         console.log(`Updated task ${taskId} to status: ${newStatus}`);
 
-        // Re-render to show updated archive
-        setTasks(modules);
+        // Re-apply filters to respect active filter state
+        window.dispatchEvent(new CustomEvent('modulesLoaded', { detail: modules }));
       }
     });
   });
 }
 
 if (reload) {
-  reload.addEventListener("click", () => {
-    console.log("Reloaded");
-    initializeTasks();
+  reload.addEventListener("click", async () => {
+    console.log("Reloading from server...");
+    try {
+      const modules = await refetchModule();
+      
+      // Update the display with fresh data
+      setTasks(modules);
+      
+      // Trigger custom event
+      window.dispatchEvent(new CustomEvent('modulesLoaded', { detail: modules }));
+      
+      console.log("Tasks refreshed from server");
+    } catch (error) {
+      console.error("Error refreshing tasks:", error);
+      const errorGetBox = document.getElementById("errorGetBox");
+      if (errorGetBox) {
+        errorGetBox.textContent = "Failed to refresh tasks from server.";
+        errorGetBox.style.display = "block";
+      }
+    }
   });
 }
