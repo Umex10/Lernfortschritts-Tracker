@@ -2,9 +2,6 @@
 
 ## Test Data Strategy
 
-<<<<<<< HEAD
-## Test Data Strategy
-
 The E2E tests use **dummy test data** from `tests/fixtures/dummyData.js` instead of the real `module.json` file. This ensures:
 
 - **Predictable test scenarios**: Tests always run against known data
@@ -46,9 +43,6 @@ Edit `tests/fixtures/dummyData.js` to add or modify test modules. Make sure the 
 
 Aktuell enthalten:
 - `tasks.e2e.spec.js`: Tests filtering and search functionality with dummy data
-=======
-The E2E tests use **dummy test data** from `tests/fixtures/dummyData.js` instead of the real `module.json` file. This ensures:
->>>>>>> umejr
 
 - **Predictable test scenarios**: Tests always run against known data
 - **No side effects**: Real production data remains untouched
