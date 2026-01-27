@@ -68,10 +68,12 @@ export function setTasks(modules) {
     let archiveHTML = "";
     if (module.archive.length > 0) {
       const archiveItems = module.archive
-        .map(
-          (entry) =>
-            `<li>${entry.timestamp} - Status: <strong>${entry.status}</strong></li>`,
-        )
+        .map((entry) => {
+          const commentText = entry.comment
+            ? ` - Comment: ${entry.comment}`
+            : "";
+          return `<li>${entry.timestamp} - Status: <strong>${entry.status}</strong>${commentText}</li>`; //add comment if exists & is not empty ""
+        })
         .join("");
 
       archiveHTML = `
@@ -131,7 +133,7 @@ export function setTasks(modules) {
 
           <div class="task-field">
             <div class="task-label">Comment</div>
-            <textarea class="task-comment" placeholder="add a comment"></textarea>
+            <textarea id="comment-${module.id}" class="task-comment" placeholder="add a comment"></textarea>
           </div>
 
           <button class="task-save" type="button" data-task-id="${module.id}" ${lockElement ? "disabled" : ""}>
@@ -146,37 +148,67 @@ export function setTasks(modules) {
     list.appendChild(li);
   });
 
-  // on change, remember and save
+  // 1) Status changed -> enable the Save button (does not save yet)
   list.onchange = (e) => {
     const select = e.target.closest(".task-status-select");
     if (!select || select.disabled) return;
 
-    const taskId = Number(select.dataset.taskId);
-    const newStatus = select.value;
-
-    const modules = JSON.parse(localStorage.getItem("moduleData")) || [];
-    const moduleToUpdate = modules.find((m) => Number(m.id) === taskId);
-    if (!moduleToUpdate) return;
-
-    if (!moduleToUpdate.archive) moduleToUpdate.archive = [];
-    moduleToUpdate.archive.push({
-      status: newStatus,
-      timestamp: new Date().toLocaleString("de-DE"),
-    });
-
-    moduleToUpdate.status = newStatus;
-    localStorage.setItem("moduleData", JSON.stringify(modules));
-
     const card = select.closest(".task-card");
-    card.querySelector(".task-save").disabled = false;
+    const saveBtn = card.querySelector(".task-save");
+    if (saveBtn) saveBtn.disabled = false;
   };
 
+  // 2) Comment typed -> enable the Save button (does also not save yet)
+  list.oninput = (e) => {
+    const textarea = e.target.closest(".task-comment");
+    if (!textarea) return;
+
+    const card = textarea.closest(".task-card");
+    const saveBtn = card.querySelector(".task-save");
+    if (saveBtn) saveBtn.disabled = false;
+  };
+
+  // 3) Save clicked -> now persist status + comment to history and localStorage
   list.onclick = (e) => {
     const btn = e.target.closest(".task-save");
     if (!btn || btn.disabled) return;
-    initializeTasks();
+
+    const taskId = btn.dataset.taskId;
+    const card = btn.closest(".task-card");
+
+    const select = card.querySelector(
+      `.task-status-select[data-task-id="${taskId}"]`,
+    );
+    const commentEl = card.querySelector(`#comment-${taskId}`);
+
+    const newStatus = select ? select.value : STATUS.TODO;
+    const comment = commentEl ? commentEl.value.trim() : "";
+
+    const modules = JSON.parse(localStorage.getItem("moduleData")) || [];
+    const moduleToUpdate = modules.find((m) => String(m.id) === String(taskId));
+    if (!moduleToUpdate) return;
+
+    const oldStatus = moduleToUpdate.status;
+
+    // Only saving if the status actually changed (is in the taks requirements)
+    if (String(oldStatus) !== String(newStatus)) {
+      if (!moduleToUpdate.archive) moduleToUpdate.archive = [];
+      moduleToUpdate.archive.push({
+        status: newStatus,
+        comment: comment,
+        timestamp: new Date().toLocaleString("de-DE"),
+      });
+
+      moduleToUpdate.status = newStatus;
+      localStorage.setItem("moduleData", JSON.stringify(modules));
+
+      // Rerender and update progress bars
+      setTasks(modules);
+      window.dispatchEvent(new Event("modulesUpdated"));
+    }
+
+    // Reset the Save button and clear the comment field value
+    btn.disabled = true;
+    if (commentEl) commentEl.value = "";
   };
 }
-document.addEventListener("DOMContentLoaded", () => {
-  initializeTasks();
-});

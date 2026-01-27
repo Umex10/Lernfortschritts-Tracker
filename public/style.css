@@ -527,3 +527,8 @@ button:active {
   gap: 10px;
   color: #0b1120;
 }
+/*task input*/
+.task-comment {
+  background: #fff;
+  color: #000;
+}

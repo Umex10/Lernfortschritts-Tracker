@@ -2,6 +2,12 @@ import { initializeTasks } from "./initializeTasks.js";
 
 const STORAGE_KEY = "moduleData";
 
+// Rebuild the progress bars when the data in localStorage changes (after Save).
+window.addEventListener("modulesUpdated", () => {
+  //console.log("modulesUpdated angekommen");
+  renderAll();
+});
+// Build the progress bars once when the page loads.
 document.addEventListener("DOMContentLoaded", () => {
   renderAll();
 
