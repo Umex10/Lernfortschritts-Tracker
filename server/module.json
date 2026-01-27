@@ -1,42 +1,46 @@
-[{
-  "id": 1,
-  "title": "How to Use the Learning Platform",
-  "category": "Help",
-  "status": "done",
-  "description": "Introduction to platform navigation and core features",
-  "default": true,
-  "explanation": "This course guides you through the learning platform. You will learn how to navigate between courses, track your progress, use interactive exercises, and access additional resources.",
-  "waitingTasks": [2, 3]
-},
-{
-  "id": 2,
-  "title": "German for Beginners",
-  "status": "done",
-  "description": "Basic German grammar, vocabulary, and conversation",
-  "default": false,
-  "waitingFor": 1,
-  "waitingTasks": [5]
-},
-{
-  "id": 3,
-  "title": "Business English Communication",
-  "status": "in progress",
-  "description": "Professional English for work and business",
-  "default": false,
-  "waitingFor": 1
-},
-{
-  "id": 4,
-  "title": "Web Development Fundamentals",
-  "category": "Programming",
-  "status": "todo",
-  "default": false
-},
-{
-  "id": 5,
-  "title": "Economics Fundamentals",
-  "category": "Economics",
-  "status": "done",
-  "default": false,
-  "waitingFor": 2
-}]
+[
+  {
+    "id": 1,
+    "title": "How to Use the Learning Platform",
+    "category": "Help",
+    "status": "done",
+    "description": "Introduction to platform navigation and core features",
+    "default": true,
+    "explanation": "This course guides you through the learning platform. You will learn how to navigate between courses, track your progress, use interactive exercises, and access additional resources.",
+    "waitingTasks": [2, 3]
+  },
+  {
+    "id": 2,
+    "title": "German for Beginners",
+    "category": "Languages",
+    "status": "done",
+    "description": "Basic German grammar, vocabulary, and conversation",
+    "default": false,
+    "waitingFor": 1,
+    "waitingTasks": [5]
+  },
+  {
+    "id": 3,
+    "title": "Business English Communication",
+    "category": "Languages",
+    "status": "in progress",
+    "description": "Professional English for work and business",
+    "default": false,
+    "waitingFor": 1
+  },
+  {
+    "id": 4,
+    "title": "Web Development Fundamentals",
+    "category": "Programming",
+    "status": "todo",
+    "default": false
+  },
+  {
+    "id": 5,
+    "title": "Economics Fundamentals",
+    "category": "Economics",
+    "status": "done",
+    "default": false,
+    "waitingFor": 2
+  }
+]
